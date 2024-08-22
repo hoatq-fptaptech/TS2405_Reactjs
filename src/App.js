@@ -5,6 +5,11 @@ function App() {
   return (
     <div className="App">
         <NavBar/>
+        <main>
+          <Button/>
+        </main>
+
+
     </div>
   );
 }
