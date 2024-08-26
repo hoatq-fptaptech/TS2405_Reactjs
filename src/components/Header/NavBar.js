@@ -1,41 +1,40 @@
+import { Link } from "react-router-dom";
+import TopLink from "./TopLink";
+
 const NavBar = () => {
     return (
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
-                <div className="container">
-                    <a className="navbar-brand" href="#">Navbar</a>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                        <a className="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li className="nav-item">
-                        <a className="nav-link" href="#">Link</a>
-                        </li>
-                        <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul className="dropdown-menu">
-                            <li><a className="dropdown-item" href="#">Action</a></li>
-                            <li><a className="dropdown-item" href="#">Another action</a></li>
-                            <li><hr className="dropdown-divider"/></li>
-                            <li><a className="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                        </li>
-                        <li className="nav-item">
-                        <a className="nav-link disabled" aria-disabled="true">Disabled</a>
-                        </li>
-                    </ul>
-                    <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                        <button className="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                    </div>
+    <div className="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
+        <TopLink/>
+        <nav className="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+            <a href="index.html" className="navbar-brand ms-4 ms-lg-0">
+                <h1 className="fw-bold text-primary m-0">F<span className="text-secondary">oo</span>dy</h1>
+            </a>
+            <button type="button" className="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarCollapse">
+                <div className="navbar-nav ms-auto p-4 p-lg-0">
+                    <Link to="/" className="nav-item nav-link active">Home</Link>
+                    <Link to="/about-us" className="nav-item nav-link">About Us</Link>
+                    
+                    <Link to="/products" className="nav-item nav-link">Products</Link>
+                    
+                    <Link to="/contact-us" className="nav-item nav-link">Contact Us</Link>
                 </div>
-                </nav>
+                <div className="d-none d-lg-flex ms-2">
+                    <a className="btn-sm-square bg-white rounded-circle ms-3" href="">
+                        <small className="fa fa-search text-body"></small>
+                    </a>
+                    <a className="btn-sm-square bg-white rounded-circle ms-3" href="">
+                        <small className="fa fa-user text-body"></small>
+                    </a>
+                    <a className="btn-sm-square bg-white rounded-circle ms-3" href="">
+                        <small className="fa fa-shopping-bag text-body"></small>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
         )
 }
 
