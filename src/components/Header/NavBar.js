@@ -3,7 +3,7 @@ import TopLink from "./TopLink";
 
 const NavBar = () => {
     return (
-    <div className="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
+    <div className="container-fluid " data-wow-delay="0.1s">
         <TopLink/>
         <nav className="navbar navbar-expand-lg navbar-light py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
             <a href="index.html" className="navbar-brand ms-4 ms-lg-0">
