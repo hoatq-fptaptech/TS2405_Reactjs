@@ -30,15 +30,51 @@ const Home = ()=>{
     ]
     const products = [
         {
-            thumbnail: " ",
+            thumbnail: "img/product-1.jpg",
             name: "Fresh Tomato",
             old_price: 29.99,
             price: 19.00
         },
         {
-            thumbnail: " ",
+            thumbnail: "img/product-1.jpg",
             name: "Fresh Tomato",
             old_price: 29.99,
+            price: 19.00
+        },
+        {
+            thumbnail: "img/product-3.jpg",
+            name: "Fresh Tomato",
+            old_price: 29.99,
+            price: 19.00
+        },
+        {
+            thumbnail: "img/product-4.jpg",
+            name: "Fresh Tomato",
+            old_price: 29.99,
+            price: 19.00
+        },
+        {
+            thumbnail: "img/product-5.jpg",
+            name: "Fresh Tomato",
+            old_price: 29.99,
+            price: 19.00
+        },
+        {
+            thumbnail: "img/product-6.jpg",
+            name: "Fresh Tomato",
+            old_price: 29.99,
+            price: 19.00
+        },
+        {
+            thumbnail: "img/product-4.jpg",
+            name: "Fresh Tomato",
+            old_price: 29.99,
+            price: 20.00
+        },
+        {
+            thumbnail: "img/product-8.jpg",
+            name: "Fresh Tomato",
+            old_price: 49.99,
             price: 19.00
         }
     ]
@@ -46,7 +82,7 @@ const Home = ()=>{
         <>
             <HomeAbout label={about_me} sub_title={desc_txt} list={fas}><i>Hello world!</i></HomeAbout>
             <HomeFeature features={features} title="Our Features"/>
-            <OurProduct />
+            <OurProduct products={products}/>
         </>
     )
 }

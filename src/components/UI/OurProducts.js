@@ -1,6 +1,6 @@
 import Grid from "../Products/Grid"
 
-const OurProduct = () => {
+const OurProduct = ({products}) => {
     return (
         <div class="container-xxl py-5">
         <div class="container">
@@ -27,13 +27,13 @@ const OurProduct = () => {
             </div>
             <div class="tab-content">
                 <div id="tab-1" class="tab-pane fade show p-0 active">
-                    <Grid/>
+                    <Grid products={products}/>
                 </div>
                 <div id="tab-2" class="tab-pane fade show p-0">
-                    <Grid/>
+                    <Grid products={products}/>
                 </div>
                 <div id="tab-3" class="tab-pane fade show p-0">
-                    <Grid/>
+                    <Grid products={products}/>
                 </div>
             </div>
         </div>
