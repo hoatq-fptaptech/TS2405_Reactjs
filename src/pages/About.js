@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Col, Row, Button, Form } from "react-bootstrap";
 const About = ()=>{
     const [number,setNumber] =  useState(10); // khai báo 1 state là number có giá trị ban đầu = 10
-    const [fullname,setFullname] = useState("");
+    const [info,setInfo] = useState({});
     const clickMe = ()=>{
         setNumber(number+10>100?100:number+10);//<=> number =  number +1   
     }
@@ -11,7 +11,11 @@ const About = ()=>{
     }
     const handleInput = (e)=>{
         const value = e.target.value; // lấy được giá trị của input đang được target đến
-        setFullname(value);
+        const name = e.target.name;
+        setInfo({...info,[name]:value});
+    }
+    const submitForm = ()=>{
+
     }
     return (
     <div className="container">
@@ -24,22 +28,22 @@ const About = ()=>{
         <p><button onClick={minusNum} className="btn btn-danger">Minus number</button></p>
         <Row>
             <Col xs={4}>
-            <Form className="text-start">
+            <Form className="text-start" onSubmit={submitForm}>
                 <Form.Group className="mb-3" controlId="formBasicFullname">
-                    <Form.Label>Fullname: {fullname}</Form.Label>
-                    <Form.Control onChange={handleInput} value={fullname} name="full_name" type="text" placeholder="Enter Full name" />
+                    <Form.Label>Fullname: {info.fullname}</Form.Label>
+                    <Form.Control onChange={handleInput} value={info.fullname} name="fullname" type="text" placeholder="Enter Full name" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control name="email" type="email" placeholder="Enter email" />
+                    <Form.Label>Email address: {info.email}</Form.Label>
+                    <Form.Control onChange={handleInput} name="email" value={info.email} type="email" placeholder="Enter email" />
                     <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
                     </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control name="password" type="password" placeholder="Password" />
+                    <Form.Label>Password: {info.password}</Form.Label>
+                    <Form.Control onChange={handleInput} name="password" value={info.password} type="password" placeholder="Password" />
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Submit
