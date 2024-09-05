@@ -12,7 +12,7 @@ const About = ()=>{
     const handleInput = (e)=>{
         const value = e.target.value; // lấy được giá trị của input đang được target đến
         const name = e.target.name;
-        setInfo({...info,[name]:value});
+        setInfo({...info,[name]:value});// sẽ trả về giá trị của info sau khi đã cập nhật giá trị
     }
     const submitForm = ()=>{
 
