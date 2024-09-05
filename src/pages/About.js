@@ -2,11 +2,16 @@ import { useState } from "react";
 import { Col, Row, Button, Form } from "react-bootstrap";
 const About = ()=>{
     const [number,setNumber] =  useState(10); // khai báo 1 state là number có giá trị ban đầu = 10
+    const [fullname,setFullname] = useState("");
     const clickMe = ()=>{
         setNumber(number+10>100?100:number+10);//<=> number =  number +1   
     }
     const minusNum = ()=>{
         setNumber(number-10>0?number-10:0);
+    }
+    const handleInput = (e)=>{
+        const value = e.target.value; // lấy được giá trị của input đang được target đến
+        setFullname(value);
     }
     return (
     <div className="container">
@@ -19,10 +24,14 @@ const About = ()=>{
         <p><button onClick={minusNum} className="btn btn-danger">Minus number</button></p>
         <Row>
             <Col xs={4}>
-            <Form>
+            <Form className="text-start">
+                <Form.Group className="mb-3" controlId="formBasicFullname">
+                    <Form.Label>Fullname: {fullname}</Form.Label>
+                    <Form.Control onChange={handleInput} value={fullname} name="full_name" type="text" placeholder="Enter Full name" />
+                </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control name="email" type="email" placeholder="Enter email" />
                     <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
                     </Form.Text>
@@ -30,10 +39,7 @@ const About = ()=>{
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
+                    <Form.Control name="password" type="password" placeholder="Password" />
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Submit
