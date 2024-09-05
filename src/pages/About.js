@@ -31,8 +31,8 @@ const About = ()=>{
             <Form className="text-start" onSubmit={submitForm}>
                 <Form.Group className="mb-3" controlId="formBasicFullname">
                     <Form.Label>Fullname: {info.fullname}</Form.Label>
-                    <Form.Control onChange={handleInput} value={info.fullname} name="fullname" type="text" placeholder="Enter Full name" />
-                </Form.Group>
+                    <Form.Control onChange={handleInput} value={info.fulname} name="fullname" type="text" placeholder="Enter Full name" />
+                </Form.Group>l
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address: {info.email}</Form.Label>
                     <Form.Control onChange={handleInput} name="email" value={info.email} type="email" placeholder="Enter email" />
