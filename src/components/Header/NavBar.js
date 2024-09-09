@@ -21,6 +21,7 @@ const NavBar = () => {
                     <Link to="/products" className="nav-item nav-link">Products</Link>
                     
                     <Link to="/contact-us" className="nav-item nav-link">Contact Us</Link>
+                    <Link to="/survey" className="nav-item nav-link">Survey</Link>
                 </div>
                 <div className="d-none d-lg-flex ms-2">
                     <a className="btn-sm-square bg-white rounded-circle ms-3" href="">
