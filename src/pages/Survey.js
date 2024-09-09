@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container, Form, FormLabel, FormText, Table } from "react-bootstrap";
+import { Container, Form, Table } from "react-bootstrap";
 
 const Survey = () =>{
     const questions = [

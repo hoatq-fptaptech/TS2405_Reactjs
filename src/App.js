@@ -6,6 +6,7 @@ import About from './pages/About';
 import Footer from './components/Footer/Footer';
 import Fan from './pages/Fan';
 import Survey from './pages/Survey';
+import Regsiter from './pages/Register';
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
             <Route path='/about-us' Component={About} />
             <Route path='/fan' Component={Fan} />
             <Route path='/survey' Component={Survey} />
+            <Route path='/register' Component={Regsiter} />
         </Routes>
       
         <Footer/>
