@@ -1,9 +1,17 @@
 import { Link } from "react-router-dom";
 import TopLink from "./TopLink";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const NavBar = () => {
     const [categories,setCategories] = useState([]);
+    const getCategories = async ()=>{
+        const rs = await fetch("https://dummyjson.com/products/categories");
+        const data = await rs.json();
+        setCategories(data);
+    }
+    useEffect(()=>{
+        getCategories();
+    },[]);
     return (
     <div className="container-fluid " data-wow-delay="0.1s">
         <TopLink/>
@@ -18,9 +26,12 @@ const NavBar = () => {
                 <div className="navbar-nav ms-auto p-4 p-lg-0">
                     <Link to="/" className="nav-item nav-link active">Home</Link>        
                     <Link to="/products" className="nav-item nav-link">Products</Link>
-                    <Link to="/" className="nav-item nav-link">Category 1</Link>
-                    <Link to="/" className="nav-item nav-link">Category 2</Link>
-                    <Link to="/" className="nav-item nav-link">Category 3</Link>
+                    {
+                        categories.map((item,key)=>{
+                            return <Link key={key} to={"/category/"+item.slug} className="nav-item nav-link">{item.name}</Link>
+                        })
+                    }
+             
                    
                 </div>
                 <div className="d-none d-lg-flex ms-2">

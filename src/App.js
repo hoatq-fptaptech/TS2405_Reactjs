@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 import Fan from './pages/Fan';
 import Survey from './pages/Survey';
 import Regsiter from './pages/Register';
+import Category from './pages/Category';
 function App() {
   return (
     <div className="App">
@@ -18,6 +19,7 @@ function App() {
             <Route path='/fan' Component={Fan} />
             <Route path='/survey' Component={Survey} />
             <Route path='/register' Component={Regsiter} />
+            <Route path='/category/:slug' Component={Category} />
         </Routes>
       
         <Footer/>
