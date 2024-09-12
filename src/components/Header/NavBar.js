@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import TopLink from "./TopLink";
+import { useState } from "react";
 
 const NavBar = () => {
+    const [categories,setCategories] = useState([]);
     return (
     <div className="container-fluid " data-wow-delay="0.1s">
         <TopLink/>
@@ -14,15 +16,12 @@ const NavBar = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarCollapse">
                 <div className="navbar-nav ms-auto p-4 p-lg-0">
-                    <Link to="/" className="nav-item nav-link active">Home</Link>
-                    <Link to="/about-us" className="nav-item nav-link">About Us</Link>
-                    <Link to="/fan" className="nav-item nav-link">Fan</Link>
-                    
+                    <Link to="/" className="nav-item nav-link active">Home</Link>        
                     <Link to="/products" className="nav-item nav-link">Products</Link>
-                    
-                    <Link to="/contact-us" className="nav-item nav-link">Contact Us</Link>
-                    <Link to="/survey" className="nav-item nav-link">Survey</Link>
-                    <Link to="/register" className="nav-item nav-link">Register</Link>
+                    <Link to="/" className="nav-item nav-link">Category 1</Link>
+                    <Link to="/" className="nav-item nav-link">Category 2</Link>
+                    <Link to="/" className="nav-item nav-link">Category 3</Link>
+                   
                 </div>
                 <div className="d-none d-lg-flex ms-2">
                     <a className="btn-sm-square bg-white rounded-circle ms-3" href="">
