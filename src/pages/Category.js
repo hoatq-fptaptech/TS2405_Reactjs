@@ -13,7 +13,7 @@ const Category = ()=>{
     }
     useEffect(()=>{
         getProductsData();
-    },[])
+    },[slug])
     return (
         <Container>
             <h1 className="text-capitalize">{slug}</h1>  
