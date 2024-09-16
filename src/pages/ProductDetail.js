@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap"
 import { useParams } from "react-router-dom";
@@ -8,9 +9,16 @@ const ProductDetail = ()=>{
     const {id} = useParams();
     // call api
     const getDetail = async ()=>{
-        const rs = await fetch("https://dummyjson.com/products/"+id);
-        const data = await rs.json();
-        setProduct(data);
+        // const rs = await fetch("https://dummyjson.com/products/"+id);
+        // const data = await rs.json();
+        // setProduct(data);
+        try {
+            const rs = await axios.get(`https://dummyjson.com/products/${id}`);
+            const data = rs.data;
+            setProduct(data);
+        } catch (error) {
+            alert(error);
+        }
     }
     // useEffect get data
     useEffect(()=>{
