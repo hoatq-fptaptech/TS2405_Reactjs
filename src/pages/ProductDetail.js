@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap"
 import { useParams } from "react-router-dom";
+import { detailProduct } from "../services/apiService";
 
 const ProductDetail = ()=>{
     const [product,setProduct] = useState({});
@@ -12,13 +13,8 @@ const ProductDetail = ()=>{
         // const rs = await fetch("https://dummyjson.com/products/"+id);
         // const data = await rs.json();
         // setProduct(data);
-        try {
-            const rs = await axios.get(`https://dummyjson.com/products/${id}`);
-            const data = rs.data;
-            setProduct(data);
-        } catch (error) {
-            alert(error);
-        }
+       const data = await detailProduct(id);
+       setProduct(data);
     }
     // useEffect get data
     useEffect(()=>{
