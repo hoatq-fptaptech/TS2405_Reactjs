@@ -9,6 +9,7 @@ import Survey from './pages/Survey';
 import Regsiter from './pages/Register';
 import Category from './pages/Category';
 import ProductDetail from './pages/ProductDetail';
+import Products from './pages/Products';
 function App() {
   return (
     <div className="App">
@@ -22,6 +23,7 @@ function App() {
             <Route path='/register' Component={Regsiter} />
             <Route path='/category/:slug' Component={Category} />
             <Route path='/product/:id' Component={ProductDetail} />
+            <Route path='/products' Component={Products} />
         </Routes>
       
         <Footer/>
