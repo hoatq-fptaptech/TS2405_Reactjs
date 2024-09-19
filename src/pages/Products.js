@@ -3,19 +3,34 @@ import { Formik } from "formik";
 import Grid from "../components/Products/Grid"
 import { useEffect, useState } from "react"
 import { Col, Form, Row } from "react-bootstrap";
+import axios from "axios";
 
 const Products = ()=>{
     const [products,setProducts] = useState([]);
-    const [search,setSearch] = useState("");
-    const [order,setOrder] = useState("");
-    const handleChange = ()=>{
+    // const [search,setSearch] = useState("");
+    // const [order,setOrder] = useState("");
+    const [filter,setFilter] = useState({
+        search:"",
+        order:"asc"
+    })
+    const handleChange = (e)=>{
         // uopdate search - order
+        setFilter({...filter,[e.target.name]:[e.target.value]});
+    }
+    const getData = async ()=>{
+        // call api search
+        const url = `https://dummyjson.com/products/search?q=${filter.search}&sortBy=title&order=${filter.order}`;
+        try {
+            const rs = axios.get(url);
+            setProducts((await rs).data.products);
+        } catch (error) {
+            
+        }
+        // update data for products
     }
     useEffect(()=>{ // auto after change state
-        // call api search
-
-        // update data for products
-    },[search,order])
+        getData();
+    },[filter])
     return (
         <div class="container-xxl py-5">
         <div class="container">
@@ -29,10 +44,10 @@ const Products = ()=>{
                 <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
                     <Row>
                         <Col xs={6}>
-                        <input onChange={handleChange} value={search} type="text" name="search" className="form-control" placeholder="Search.."/>
+                        <input onChange={handleChange} value={filter.search} type="text" name="search" className="form-control" placeholder="Search.."/>
                         </Col>
                         <Col xs={6}>
-                        <Form.Select  onChange={handleChange} value={order} aria-label="Default select example">
+                        <Form.Select  onChange={handleChange} value={filter.order} aria-label="Default select example">
                             <option value="asc">Low to high</option>
                             <option value="desc">High to low</option>
                         </Form.Select>
