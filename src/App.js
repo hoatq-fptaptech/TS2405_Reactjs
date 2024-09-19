@@ -15,7 +15,8 @@ import { Provider } from './hooks/context/context';
 import { useReducer, useState } from 'react';
 import reducer from './hooks/context/reducer';
 function App() {
-  const [state,dispatch] = useReducer(reducer,STATE);
+  const DATA = localStorage.getItem("state")?JSON.parse(localStorage.getItem("state")): STATE;
+  const [state,dispatch] = useReducer(reducer,DATA);
   return (
     <Provider value={{state,dispatch}}>
       <div id="spinner" className={(state.isLoading?"show ":" ")+ "bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"}>
