@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import TopLink from "./TopLink";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import Context from "../../hooks/context/context";
 
 const NavBar = () => {
     const [categories,setCategories] = useState([]);
+    const {state,setState} = useContext(Context);
     const getCategories = async ()=>{
         const rs = await fetch("https://dummyjson.com/products/categories");
         const data = await rs.json();
@@ -28,11 +30,11 @@ const NavBar = () => {
                     <Link to="/products" className="nav-item nav-link">Products</Link>
                     {
                         categories.map((item,key)=>{
-                            return <Link key={key} to={"/category/"+item.slug} className="nav-item nav-link">{item.name}</Link>
+                            return key>4?null:<Link key={key} to={"/category/"+item.slug} className="nav-item nav-link">{item.name}</Link>
                         })
                     }
              
-                   
+                   <Link to="/cart" className="nav-item nav-link">Cart({state.cart.length})</Link>
                 </div>
                 <div className="d-none d-lg-flex ms-2">
                     <a className="btn-sm-square bg-white rounded-circle ms-3" href="">

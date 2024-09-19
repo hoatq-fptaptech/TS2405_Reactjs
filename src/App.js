@@ -10,8 +10,13 @@ import Regsiter from './pages/Register';
 import Category from './pages/Category';
 import ProductDetail from './pages/ProductDetail';
 import Products from './pages/Products';
+import STATE from './hooks/context/initState';
+import { Provider } from './hooks/context/context';
+import { useState } from 'react';
 function App() {
+  const [state,setState] = useState(STATE);
   return (
+    <Provider value={{state,setState}}>
     <div className="App">
         <NavBar/>
       
@@ -29,6 +34,7 @@ function App() {
         <Footer/>
 
     </div>
+    </Provider>
   );
 }
 

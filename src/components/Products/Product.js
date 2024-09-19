@@ -1,6 +1,16 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import Context from "../../hooks/context/context";
 
 const Product = ({product})=>{
+    const {state,setState} = useContext(Context);
+    const addToCart = ()=>{
+        var cart = state.cart; // array
+        cart.push(product);
+        // lấy product đưa vào trong cart của global state
+        setState({...state,cart:cart});
+    }
+
     return (
         <div className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
             <div className="product-item">
@@ -18,7 +28,7 @@ const Product = ({product})=>{
                         <Link  to={"/product/"+product.id} className="text-body" href=""><i className="fa fa-eye text-primary me-2"></i>View detail</Link>
                     </small>
                     <small className="w-50 text-center py-2">
-                        <a className="text-body" href=""><i className="fa fa-shopping-bag text-primary me-2"></i>Add to cart</a>
+                        <button onClick={addToCart} className="text-body btn btn-default" type="button"><i className="fa fa-shopping-bag text-primary me-2"></i>Add to cart</button>
                     </small>
                 </div>
             </div>
