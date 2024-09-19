@@ -1,14 +1,34 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Context from "../../hooks/context/context";
+import { ACTION } from "../../hooks/context/reducer";
+import { type } from "@testing-library/user-event/dist/type";
 
 const Product = ({product})=>{
-    const {state,setState} = useContext(Context);
+    const {state,dispatch} = useContext(Context);
     const addToCart = ()=>{
         var cart = state.cart; // array
-        cart.push(product);
+        // kiêm tra sp đã có trong cart hay chưa?
+        var check = false;
+        cart.map(e=>{
+            if(e.id == product.id){
+                check = true;
+                e.buy_qty = e.buy_qty + 1;
+            }
+            return e;
+        })
+        if(check == false){
+            product.buy_qty = 1; // tự tạo ra 1 thuộc tính là buy_qty
+            cart.push(product);
+        }
+        
         // lấy product đưa vào trong cart của global state
-        setState({...state,cart:cart});
+        //setState({...state,cart:cart});
+        dispatch({type: ACTION.UPDATE_CART, payload: cart})
+        dispatch({type: ACTION.SHOW_LOADING});
+        setTimeout(()=>{
+            dispatch({type: ACTION.HIDE_LOADING})
+        },1000);
     }
 
     return (

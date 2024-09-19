@@ -12,11 +12,15 @@ import ProductDetail from './pages/ProductDetail';
 import Products from './pages/Products';
 import STATE from './hooks/context/initState';
 import { Provider } from './hooks/context/context';
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
+import reducer from './hooks/context/reducer';
 function App() {
-  const [state,setState] = useState(STATE);
+  const [state,dispatch] = useReducer(reducer,STATE);
   return (
-    <Provider value={{state,setState}}>
+    <Provider value={{state,dispatch}}>
+      <div id="spinner" className={(state.isLoading?"show ":" ")+ "bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"}>
+        <div class="spinner-border text-primary" role="status"></div>
+    </div>
     <div className="App">
         <NavBar/>
       

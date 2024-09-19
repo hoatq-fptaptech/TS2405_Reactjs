@@ -5,7 +5,7 @@ import Context from "../../hooks/context/context";
 
 const NavBar = () => {
     const [categories,setCategories] = useState([]);
-    const {state,setState} = useContext(Context);
+    const {state,dispatch} = useContext(Context);
     const getCategories = async ()=>{
         const rs = await fetch("https://dummyjson.com/products/categories");
         const data = await rs.json();

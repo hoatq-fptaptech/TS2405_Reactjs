@@ -1,4 +1,5 @@
 const STATE = {
-    cart: []
+    cart: [],
+    isLoading: false
 }
 export default STATE;
