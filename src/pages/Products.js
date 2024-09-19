@@ -15,7 +15,12 @@ const Products = ()=>{
     })
     const handleChange = (e)=>{
         // uopdate search - order
-        setFilter({...filter,[e.target.name]:[e.target.value]});
+       setFilter({...filter,[e.target.name]:[e.target.value]});
+    //    var f = filter;
+    //    const name = e.target.name;
+    //    const value = e.target.value;
+    //    f[name] = value;
+    //    setFilter(f);
     }
     const getData = async ()=>{
         // call api search
@@ -47,7 +52,7 @@ const Products = ()=>{
                         <input onChange={handleChange} value={filter.search} type="text" name="search" className="form-control" placeholder="Search.."/>
                         </Col>
                         <Col xs={6}>
-                        <Form.Select  onChange={handleChange} value={filter.order} aria-label="Default select example">
+                        <Form.Select name="order" onChange={handleChange} value={filter.order} aria-label="Default select example">
                             <option value="asc">Low to high</option>
                             <option value="desc">High to low</option>
                         </Form.Select>
