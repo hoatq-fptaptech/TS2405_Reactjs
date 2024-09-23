@@ -20,6 +20,30 @@ const Cart = ()=>{
             dispatch({type: ACTION.HIDE_LOADING})
         },1000);
     }
+    const incrementQty = (id)=>{
+        cart.map(item=>{
+            if(item.id == id)
+                item.buy_qty = item.buy_qty +1;
+            return item;
+        })
+        dispatch({type: ACTION.UPDATE_CART,payload: cart});
+        dispatch({type: ACTION.SHOW_LOADING});
+        setTimeout(()=>{
+            dispatch({type: ACTION.HIDE_LOADING})
+        },1000);
+    }
+    const decrementQty = (id)=>{
+        cart.map(item=>{
+            if(item.id == id)
+                item.buy_qty = item.buy_qty > 1?item.buy_qty - 1: 1; 
+            return item;
+        })
+        dispatch({type: ACTION.UPDATE_CART,payload: cart});
+        dispatch({type: ACTION.SHOW_LOADING});
+        setTimeout(()=>{
+            dispatch({type: ACTION.HIDE_LOADING})
+        },1000);
+    }
     return (
         <div class="container-xxl py-5">
         <div class="container">
@@ -53,12 +77,12 @@ const Cart = ()=>{
                                         <td>{item.price}</td>
                                         <td>
                                         <InputGroup className="mb-3">
-                                            <InputGroup.Text>-</InputGroup.Text>
+                                            <InputGroup.Text onClick={()=>decrementQty(item.id)}>-</InputGroup.Text>
                                             <input style={{width: 10}} type="number" className="form-control" value={item.buy_qty} />
-                                            <InputGroup.Text>+</InputGroup.Text>
+                                            <InputGroup.Text onClick={()=>incrementQty(item.id)}>+</InputGroup.Text>
                                         </InputGroup>
                                         </td>
-                                        <td>{item.buy_qty* item.price} <Badge onClick={()=>removeItem(item.id)} bg="dark">x</Badge></td>
+                                        <td>{(item.buy_qty* item.price).toFixed(2)} <Badge onClick={()=>removeItem(item.id)} bg="dark">x</Badge></td>
                                     </tr>
                                 })
                             }
@@ -67,7 +91,7 @@ const Cart = ()=>{
                 </div>
                 <Col lg={8}></Col>
                 <Col>
-                    <h4>Subtotal: ${total}</h4>       
+                    <h4>Subtotal: ${total.toFixed(2)}</h4>       
                     <hr/> 
                     <h4>Tax: ${(total * 0.1).toFixed(2)}</h4>     
                     <hr/>    
