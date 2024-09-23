@@ -34,7 +34,7 @@ const NavBar = () => {
                         })
                     }
              
-                   <Link to="/cart" className="nav-item nav-link">Cart({state.cart.length})</Link>
+                
                 </div>
                 <div className="d-none d-lg-flex ms-2">
                     <a className="btn-sm-square bg-white rounded-circle ms-3" href="">
@@ -43,9 +43,9 @@ const NavBar = () => {
                     <a className="btn-sm-square bg-white rounded-circle ms-3" href="">
                         <small className="fa fa-user text-body"></small>
                     </a>
-                    <a className="btn-sm-square bg-white rounded-circle ms-3" href="">
-                        <small className="fa fa-shopping-bag text-body"></small>
-                    </a>
+                    <Link  className="btn-sm-square bg-white rounded-circle ms-3" to="/cart">
+                        <small className="fa fa-shopping-bag text-body">({state.cart.length})</small>
+                    </Link>
                 </div>
             </div>
         </nav>

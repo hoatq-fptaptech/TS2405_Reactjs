@@ -14,6 +14,7 @@ import STATE from './hooks/context/initState';
 import { Provider } from './hooks/context/context';
 import { useReducer, useState } from 'react';
 import reducer from './hooks/context/reducer';
+import Cart from './pages/Cart';
 function App() {
   const DATA = localStorage.getItem("state")?JSON.parse(localStorage.getItem("state")): STATE;
   const [state,dispatch] = useReducer(reducer,DATA);
@@ -34,6 +35,7 @@ function App() {
             <Route path='/category/:slug' Component={Category} />
             <Route path='/product/:id' Component={ProductDetail} />
             <Route path='/products' Component={Products} />
+            <Route path='/cart' Component={Cart} />
         </Routes>
       
         <Footer/>
