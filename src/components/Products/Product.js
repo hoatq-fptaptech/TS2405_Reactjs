@@ -1,13 +1,16 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { CART_ACTION } from "../../redux/cart/reducer";
+import { connect } from "react-redux";
 // import Context from "../../hooks/context/context";
 // import { ACTION } from "../../hooks/context/reducer";
 
-const Product = ({product})=>{
+const Product = (props)=>{
+    const product = props.product;
     // const {state,dispatch} = useContext(Context);
     const addToCart = ()=>{
         // var cart = state.cart; // array
-        var cart =[]; // array
+        var cart = props.items; // array
         // kiêm tra sp đã có trong cart hay chưa?
         var check = false;
         cart.map(e=>{
@@ -21,7 +24,9 @@ const Product = ({product})=>{
             product.buy_qty = 1; // tự tạo ra 1 thuộc tính là buy_qty
             cart.push(product);
         }
-        
+        // use redux
+        props.addCart(cart);
+
         // lấy product đưa vào trong cart của global state
         //setState({...state,cart:cart});
         // dispatch({type: ACTION.UPDATE_CART, payload: cart})
@@ -55,4 +60,24 @@ const Product = ({product})=>{
         </div>
     )
 }
-export default Product;
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        items: state.cart_reducers.items? state.cart_reducers.items:[]
+    }
+}
+
+const mapDispatchToProps = (dispatch)=>{
+    console.log(dispatch);
+    return {
+        addCart: (cart) => {
+            let total = 0;
+            cart.forEach(e=>{
+                total += e.price * e.buy_qty;
+            });
+            dispatch({type: CART_ACTION.UPDATE_CART, payload:{items:cart, total: total}});
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Product);
