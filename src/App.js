@@ -10,17 +10,18 @@ import Regsiter from './pages/Register';
 import Category from './pages/Category';
 import ProductDetail from './pages/ProductDetail';
 import Products from './pages/Products';
-import STATE from './hooks/context/initState';
-import { Provider } from './hooks/context/context';
-import { useReducer, useState } from 'react';
+// import STATE from './hooks/context/initState';
+// import { Provider } from './hooks/context/context';
+// import { useReducer, useState } from 'react';
 import reducer from './hooks/context/reducer';
 import Cart from './pages/Cart';
 function App() {
-  const DATA = localStorage.getItem("state")?JSON.parse(localStorage.getItem("state")): STATE;
-  const [state,dispatch] = useReducer(reducer,DATA);
+  // const DATA = localStorage.getItem("state")?JSON.parse(localStorage.getItem("state")): STATE;
+  // const [state,dispatch] = useReducer(reducer,DATA);
   return (
-    <Provider value={{state,dispatch}}>
-      <div id="spinner" className={(state.isLoading?"show ":" ")+ "bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"}>
+    // <Provider value={{state,dispatch}}>
+    <>
+      <div id="spinner" className={ "bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"}>
         <div class="spinner-border text-primary" role="status"></div>
     </div>
     <div className="App">
@@ -41,7 +42,8 @@ function App() {
         <Footer/>
 
     </div>
-    </Provider>
+    </>
+    // </Provider>
   );
 }
 

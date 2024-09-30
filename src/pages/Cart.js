@@ -2,11 +2,12 @@ import { useContext } from "react";
 import { Badge, Col, InputGroup, Row, Table } from "react-bootstrap";
 import Context from "../hooks/context/context";
 import { Form, Link } from "react-router-dom";
-import { ACTION } from "../hooks/context/reducer";
+// import { ACTION } from "../hooks/context/reducer";
 
 const Cart = ()=>{
-    const {state,dispatch} = useContext(Context);
-    const cart = state.cart;
+    // const {state,dispatch} = useContext(Context);
+    const cart = [];
+    // const cart = state.cart;
     var total = 0;
     const removeItem = (id)=>{
         var new_cart = [];
@@ -14,35 +15,35 @@ const Cart = ()=>{
             if(item.id != id)
                 new_cart.push(item);
         })
-        dispatch({type: ACTION.UPDATE_CART,payload: new_cart});
-        dispatch({type: ACTION.SHOW_LOADING});
-        setTimeout(()=>{
-            dispatch({type: ACTION.HIDE_LOADING})
-        },1000);
+        // dispatch({type: ACTION.UPDATE_CART,payload: new_cart});
+        // dispatch({type: ACTION.SHOW_LOADING});
+        // setTimeout(()=>{
+        //     dispatch({type: ACTION.HIDE_LOADING})
+        // },1000);
     }
     const incrementQty = (id)=>{
-        cart.map(item=>{
-            if(item.id == id)
-                item.buy_qty = item.buy_qty +1;
-            return item;
-        })
-        dispatch({type: ACTION.UPDATE_CART,payload: cart});
-        dispatch({type: ACTION.SHOW_LOADING});
-        setTimeout(()=>{
-            dispatch({type: ACTION.HIDE_LOADING})
-        },1000);
+        // cart.map(item=>{
+        //     if(item.id == id)
+        //         item.buy_qty = item.buy_qty +1;
+        //     return item;
+        // })
+        // dispatch({type: ACTION.UPDATE_CART,payload: cart});
+        // dispatch({type: ACTION.SHOW_LOADING});
+        // setTimeout(()=>{
+        //     dispatch({type: ACTION.HIDE_LOADING})
+        // },1000);
     }
     const decrementQty = (id)=>{
-        cart.map(item=>{
-            if(item.id == id)
-                item.buy_qty = item.buy_qty > 1?item.buy_qty - 1: 1; 
-            return item;
-        })
-        dispatch({type: ACTION.UPDATE_CART,payload: cart});
-        dispatch({type: ACTION.SHOW_LOADING});
-        setTimeout(()=>{
-            dispatch({type: ACTION.HIDE_LOADING})
-        },1000);
+        // cart.map(item=>{
+        //     if(item.id == id)
+        //         item.buy_qty = item.buy_qty > 1?item.buy_qty - 1: 1; 
+        //     return item;
+        // })
+        // dispatch({type: ACTION.UPDATE_CART,payload: cart});
+        // dispatch({type: ACTION.SHOW_LOADING});
+        // setTimeout(()=>{
+        //     dispatch({type: ACTION.HIDE_LOADING})
+        // },1000);
     }
     return (
         <div class="container-xxl py-5">
