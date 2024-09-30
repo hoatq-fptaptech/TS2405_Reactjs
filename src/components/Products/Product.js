@@ -68,7 +68,6 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch)=>{
-    console.log(dispatch);
     return {
         addCart: (cart) => {
             let total = 0;
